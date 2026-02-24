@@ -1,0 +1,7 @@
+{
+    "client_id": "DIXXXXXXXXXXXXXXXXXX",
+    "client_secret": "your-duo-client-secret-here",
+    "api_hostname": "api-XXXXXXXX.duosecurity.com",
+    "redirect_uri": "http://localhost:8080/duo-callback",
+    "flask_secret_key": "change-me-to-a-random-secret-string"
+}
