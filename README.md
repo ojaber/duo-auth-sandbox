@@ -2,6 +2,11 @@
 
 A local sandbox app for testing [Duo Universal Prompt](https://duo.com/docs/duoweb-v4) two-factor authentication. Enter any username, get redirected to Duo's 2FA prompt, and inspect the full API response.
 
+<p>
+  <img src="login.png" alt="Login page" width="420">
+  <img src="result.png" alt="Auth result page" width="420">
+</p>
+
 ## Prerequisites
 
 - Python 3.10+
