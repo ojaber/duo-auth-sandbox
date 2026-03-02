@@ -10,6 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // Set theme before paint to prevent FOUC (Flash of Unstyled Content)
+        (function() {
+            const theme = localStorage.getItem('duo-theme') ||
+                (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -25,12 +33,36 @@
 
     <div class="app-container">
         <header class="app-header" role="banner">
-            <div class="logo">
-                <span class="logo-icon" aria-hidden="true">
-                    <span class="logo-bracket">{</span><span class="logo-duo">duo</span><span class="logo-bracket">}</span>
-                </span>
-                <span class="logo-text">2FA Testing Lab</span>
-                <span class="version-badge">v1.0</span>
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon" aria-hidden="true">
+                        <span class="logo-bracket">{</span><span class="logo-duo">duo</span><span class="logo-bracket">}</span>
+                    </span>
+                    <span class="logo-text">2FA Testing Lab</span>
+                    <span class="version-badge">v1.0</span>
+                </div>
+                <button class="theme-toggle"
+                        type="button"
+                        aria-label="Switch to light mode"
+                        aria-pressed="false"
+                        title="Toggle theme">
+                    <span class="theme-toggle-slider">
+                        <svg class="theme-toggle-icon theme-toggle-icon--sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="theme-toggle-icon theme-toggle-icon--moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
             </div>
         </header>
         <main class="app-main" id="main-content" role="main">
@@ -50,6 +82,7 @@
         </footer>
     </div>
 
+    <script src="{{ url_for('static', filename='js/theme-switcher.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
