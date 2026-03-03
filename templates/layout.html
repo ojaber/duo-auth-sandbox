@@ -46,6 +46,8 @@
             <button
                 class="theme-toggle"
                 id="theme-toggle"
+                role="switch"
+                aria-checked="false"
                 aria-label="Toggle theme"
                 title="Toggle theme"
                 type="button"
@@ -77,6 +79,7 @@
         var btn = document.getElementById('theme-toggle');
         var icon = document.getElementById('theme-icon');
         var metaTheme = document.getElementById('meta-theme-color');
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         // Guard: bail out if the toggle isn't in the DOM
         if (!btn || !icon) return;
@@ -86,7 +89,9 @@
         }
 
         function applyTheme(theme, animate) {
-            if (animate) {
+            var shouldAnimate = animate && !reducedMotion;
+
+            if (shouldAnimate) {
                 // Disable button for the duration of the animation to prevent class thrashing
                 btn.disabled = true;
                 icon.classList.add('theme-icon-exit');
@@ -94,21 +99,23 @@
             }
 
             setTimeout(function() {
-                // Swap theme at midpoint of icon animation
+                // Swap theme at midpoint of icon animation (or immediately if no animation)
                 if (theme === 'light') {
                     html.setAttribute('data-theme', 'light');
                     icon.textContent = '☀️';
                     btn.setAttribute('aria-label', 'Switch to dark mode');
+                    btn.setAttribute('aria-checked', 'true');
                     if (metaTheme) metaTheme.setAttribute('content', '#f1f5f9');
                 } else {
                     html.removeAttribute('data-theme');
                     icon.textContent = '🌙';
                     btn.setAttribute('aria-label', 'Switch to light mode');
+                    btn.setAttribute('aria-checked', 'false');
                     if (metaTheme) metaTheme.setAttribute('content', '#0a0e1a');
                 }
                 localStorage.setItem('duo-theme', theme);
 
-                if (animate) {
+                if (shouldAnimate) {
                     icon.classList.remove('theme-icon-exit');
                     icon.classList.add('theme-icon-enter');
                     setTimeout(function() {
@@ -116,23 +123,25 @@
                         btn.disabled = false;
                     }, 300);
                 }
-            }, animate ? 180 : 0);
+            }, shouldAnimate ? 180 : 0);
 
-            if (animate) {
+            if (shouldAnimate) {
                 setTimeout(function() {
                     document.body.classList.remove('theme-transitioning');
                 }, 500);
             }
         }
 
-        // Sync icon and aria-label to the theme already applied by the FOUC script
+        // Sync icon, aria-label, and aria-checked to the theme applied by the FOUC script
         var initialTheme = getTheme();
         if (initialTheme === 'light') {
             icon.textContent = '☀️';
             btn.setAttribute('aria-label', 'Switch to dark mode');
+            btn.setAttribute('aria-checked', 'true');
             if (metaTheme) metaTheme.setAttribute('content', '#f1f5f9');
         } else {
             btn.setAttribute('aria-label', 'Switch to light mode');
+            btn.setAttribute('aria-checked', 'false');
         }
 
         btn.addEventListener('click', function() {
