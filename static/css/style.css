@@ -49,9 +49,9 @@
 
 /* === Light Theme Variables === */
 [data-theme="light"] {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --card-bg: rgba(255, 255, 255, 0.9);
+  --bg-primary: #f1f5f9;
+  --bg-secondary: #e2e8f0;
+  --card-bg: rgba(255, 255, 255, 0.95);
   --card-border: rgba(99, 102, 241, 0.2);
 
   /* Accent Colors — keep brand-consistent, deepen cyan for contrast */
@@ -63,7 +63,7 @@
   --accent-error: #ef4444;
 
   /* Text Colors */
-  --text-primary: #0f172a;
+  --text-primary: #0a0e1a;
   --text-secondary: #475569;
   --text-muted: #64748b;
   --text-code: #4338ca;
@@ -71,8 +71,11 @@
   /* Shadows — softer on light backgrounds */
   --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
   --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
-  --shadow-lg: 0 8px 32px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 8px 32px rgba(15, 23, 42, 0.1);
   --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.2);
+
+  /* Gradient — subtle light mode radial */
+  --gradient-bg: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
 }
 
 body {
@@ -244,14 +247,20 @@ body {
 }
 
 [data-theme="light"] .theme-toggle {
-  background: rgba(99, 102, 241, 0.08);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
 }
 
 [data-theme="light"] .theme-toggle:hover {
-  background: rgba(99, 102, 241, 0.12);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.22);
+}
+
+[data-theme="light"] .theme-toggle:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
 }
 
 .theme-toggle-icon {
@@ -1036,8 +1045,9 @@ input[aria-invalid="true"]:focus {
 
 /* Header */
 [data-theme="light"] .app-header {
-  background: rgba(255, 255, 255, 0.85);
-  border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  backdrop-filter: blur(16px);
 }
 
 /* Sandbox banner */
@@ -1047,16 +1057,16 @@ input[aria-invalid="true"]:focus {
 }
 
 [data-theme="light"] .sandbox-badge {
-  background: rgba(139, 92, 246, 0.12);
-  color: #7c3aed;
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  background: rgba(139, 92, 246, 0.18);
+  color: #6d28d9;
+  border: 1px solid rgba(139, 92, 246, 0.35);
 }
 
 /* Logo */
 [data-theme="light"] .version-badge {
-  background: rgba(99, 102, 241, 0.1);
-  color: #475569;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: rgba(99, 102, 241, 0.14);
+  color: #334155;
+  border: 1px solid rgba(99, 102, 241, 0.28);
 }
 
 [data-theme="light"] .dev-badge {
@@ -1067,31 +1077,43 @@ input[aria-invalid="true"]:focus {
 
 /* Footer */
 [data-theme="light"] .app-footer {
-  background: rgba(255, 255, 255, 0.7);
-  border-top: 1px solid rgba(99, 102, 241, 0.12);
+  background: rgba(241, 245, 249, 0.9);
+  border-top: 1px solid rgba(99, 102, 241, 0.18);
 }
 
 /* Card */
 [data-theme="light"] .card {
-  box-shadow: var(--shadow-lg), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 8px 32px rgba(15, 23, 42, 0.1),
+    0 2px 8px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 [data-theme="light"] .card::before {
   background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
 }
 
+/* Button */
+[data-theme="light"] .btn-primary {
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="light"] .btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
 /* Input fields */
 [data-theme="light"] input[type="text"],
 [data-theme="light"] input[type="password"] {
-  background: rgba(248, 250, 252, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.4);
   color: var(--text-primary);
 }
 
 [data-theme="light"] input[type="text"]:hover,
 [data-theme="light"] input[type="password"]:hover {
-  background: rgba(241, 245, 249, 0.95);
-  border-color: rgba(8, 145, 178, 0.5);
+  background: #ffffff;
+  border-color: rgba(8, 145, 178, 0.6);
 }
 
 [data-theme="light"] input[type="text"]:focus,
@@ -1139,8 +1161,8 @@ input[aria-invalid="true"]:focus {
 
 /* Info note */
 [data-theme="light"] .info-note {
-  background: rgba(8, 145, 178, 0.05);
-  border: 1px solid rgba(8, 145, 178, 0.15);
+  background: rgba(8, 145, 178, 0.08);
+  border: 1px solid rgba(8, 145, 178, 0.22);
 }
 
 /* Error detail block */
