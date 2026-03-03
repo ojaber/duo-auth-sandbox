@@ -2,6 +2,16 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
+    <script>
+        (function() {
+            var stored = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = stored || (prefersDark ? 'dark' : 'light');
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Duo Universal Prompt 2FA integration testing sandbox">
     <meta name="theme-color" content="#0a0e1a">
@@ -32,6 +42,15 @@
                 <span class="logo-text">2FA Testing Lab</span>
                 <span class="version-badge">v1.0</span>
             </div>
+            <button
+                type="button"
+                class="theme-toggle"
+                id="theme-toggle"
+                aria-label="Switch to light mode"
+                aria-pressed="false"
+            >
+                <span class="theme-toggle-icon" aria-hidden="true">&#x2600;&#xFE0F;</span>
+            </button>
         </header>
         <main class="app-main" id="main-content" role="main">
             {% block content %}{% endblock %}
@@ -49,6 +68,41 @@
             </div>
         </footer>
     </div>
+
+    <script>
+    (function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+
+        var html = document.documentElement;
+        var icon = toggle.querySelector('.theme-toggle-icon');
+
+        function updateToggle(theme) {
+            var isLight = theme === 'light';
+            toggle.setAttribute('aria-pressed', isLight.toString());
+            toggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+            icon.innerHTML = isLight ? '&#x1F319;' : '&#x2600;&#xFE0F;';
+        }
+
+        // Initialize based on current theme (set by anti-FOUC script)
+        var currentTheme = html.getAttribute('data-theme') || 'dark';
+        updateToggle(currentTheme);
+
+        toggle.addEventListener('click', function() {
+            var current = html.getAttribute('data-theme') || 'dark';
+            var newTheme = current === 'light' ? 'dark' : 'light';
+
+            if (newTheme === 'light') {
+                html.setAttribute('data-theme', 'light');
+            } else {
+                html.removeAttribute('data-theme');
+            }
+
+            localStorage.setItem('theme', newTheme);
+            updateToggle(newTheme);
+        });
+    })();
+    </script>
 
     {% block scripts %}{% endblock %}
 </body>
