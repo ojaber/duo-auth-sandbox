@@ -1047,46 +1047,78 @@ input[aria-invalid="true"]:focus {
   justify-content: space-between;
 }
 
+/* Pill toggle — outer button is transparent; the track carries all visual weight */
 .theme-toggle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  font-size: 1.125rem;
-  color: var(--text-secondary);
   padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
   flex-shrink: 0;
-}
-
-.theme-toggle:hover {
-  background: rgba(99, 102, 241, 0.2);
-  border-color: rgba(99, 102, 241, 0.45);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-.theme-toggle:active {
-  transform: translateY(0);
+  border-radius: 14px; /* matches track */
 }
 
 .theme-toggle:focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 3px;
+  border-radius: 14px;
 }
 
-.theme-toggle-icon {
-  display: inline-block;
+/* Pill track */
+.theme-toggle-track {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 28px;
+  border-radius: 14px;
+  background: rgba(99, 102, 241, 0.25);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover .theme-toggle-track {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: rgba(99, 102, 241, 0.55);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* Sliding thumb */
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
   line-height: 1;
-  font-size: 1.25rem;
-  filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.5));
-  transition: transform 0.36s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s ease;
+  transition: left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.3s ease;
   transform-origin: center;
+}
+
+/* In light mode the thumb slides to the right end of the track */
+/* track width(52) - thumb width(22) - left offset(2) - right gap(2) = 26 */
+[data-theme="light"] .theme-toggle-thumb {
+  left: 26px;
+  background: #f59e0b;
+}
+
+[data-theme="light"] .theme-toggle-track {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+[data-theme="light"] .theme-toggle:hover .theme-toggle-track {
+  background: rgba(245, 158, 11, 0.35);
+  border-color: rgba(245, 158, 11, 0.65);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.12);
 }
 
 /* Icon exit animation (spin out + shrink) */
@@ -1215,18 +1247,6 @@ input[aria-invalid="true"]:focus {
 
 [data-theme="light"] .footer-divider {
   color: rgba(99, 102, 241, 0.25);
-}
-
-/* Theme toggle in light mode */
-[data-theme="light"] .theme-toggle {
-  background: rgba(99, 102, 241, 0.08);
-  border-color: rgba(99, 102, 241, 0.2);
-}
-
-[data-theme="light"] .theme-toggle:hover {
-  background: rgba(99, 102, 241, 0.15);
-  border-color: rgba(99, 102, 241, 0.35);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
 }
 
 /* Version/dev badges */
