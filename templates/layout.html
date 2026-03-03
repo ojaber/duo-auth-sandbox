@@ -46,7 +46,7 @@
             <button
                 class="theme-toggle"
                 id="theme-toggle"
-                aria-label="Switch to light mode"
+                aria-label="Toggle theme"
                 title="Toggle theme"
                 type="button"
             >
@@ -78,15 +78,18 @@
         var icon = document.getElementById('theme-icon');
         var metaTheme = document.getElementById('meta-theme-color');
 
+        // Guard: bail out if the toggle isn't in the DOM
+        if (!btn || !icon) return;
+
         function getTheme() {
             return html.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
         }
 
         function applyTheme(theme, animate) {
             if (animate) {
-                // Start icon spin-out
+                // Disable button for the duration of the animation to prevent class thrashing
+                btn.disabled = true;
                 icon.classList.add('theme-icon-exit');
-                // Enable page color transitions
                 document.body.classList.add('theme-transitioning');
             }
 
@@ -110,6 +113,7 @@
                     icon.classList.add('theme-icon-enter');
                     setTimeout(function() {
                         icon.classList.remove('theme-icon-enter');
+                        btn.disabled = false;
                     }, 300);
                 }
             }, animate ? 180 : 0);
@@ -121,17 +125,26 @@
             }
         }
 
-        // Set correct icon on load (no animation)
+        // Sync icon and aria-label to the theme already applied by the FOUC script
         var initialTheme = getTheme();
         if (initialTheme === 'light') {
             icon.textContent = '☀️';
             btn.setAttribute('aria-label', 'Switch to dark mode');
             if (metaTheme) metaTheme.setAttribute('content', '#f1f5f9');
+        } else {
+            btn.setAttribute('aria-label', 'Switch to light mode');
         }
 
         btn.addEventListener('click', function() {
             var current = getTheme();
             applyTheme(current === 'light' ? 'dark' : 'light', true);
+        });
+
+        // Follow OS preference changes only when the user has no stored preference
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+            if (!localStorage.getItem('duo-theme')) {
+                applyTheme(e.matches ? 'light' : 'dark', true);
+            }
         });
     })();
     </script>

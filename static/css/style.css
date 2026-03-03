@@ -39,6 +39,12 @@
   --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-bg: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
+  --grid-lines:
+    repeating-linear-gradient(90deg, rgba(99, 102, 241, 0.05) 0px, transparent 1px, transparent 39px, rgba(99, 102, 241, 0.05) 40px),
+    repeating-linear-gradient(0deg,  rgba(99, 102, 241, 0.05) 0px, transparent 1px, transparent 39px, rgba(99, 102, 241, 0.05) 40px);
+  --grid-lines-light:
+    repeating-linear-gradient(90deg, rgba(99, 102, 241, 0.03) 0px, transparent 1px, transparent 39px, rgba(99, 102, 241, 0.03) 40px),
+    repeating-linear-gradient(0deg,  rgba(99, 102, 241, 0.03) 0px, transparent 1px, transparent 39px, rgba(99, 102, 241, 0.03) 40px);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -50,22 +56,7 @@
 body {
   font-family: var(--font-sans);
   background: var(--bg-primary);
-  background-image:
-    var(--gradient-bg),
-    repeating-linear-gradient(
-      90deg,
-      rgba(99, 102, 241, 0.05) 0px,
-      transparent 1px,
-      transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(99, 102, 241, 0.05) 0px,
-      transparent 1px,
-      transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
-    );
+  background-image: var(--gradient-bg), var(--grid-lines);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
@@ -1119,24 +1110,13 @@ input[aria-invalid="true"]:focus {
    Theme Transition (applied via JS on switch)
    ======================================== */
 body.theme-transitioning,
-body.theme-transitioning .card,
-body.theme-transitioning .app-header,
-body.theme-transitioning .app-footer,
-body.theme-transitioning .sandbox-banner,
-body.theme-transitioning .kv-item,
-body.theme-transitioning .collapsible,
-body.theme-transitioning .collapsible-header,
-body.theme-transitioning .json-viewer,
-body.theme-transitioning .info-note,
-body.theme-transitioning .info-panel,
-body.theme-transitioning .error-detail,
-body.theme-transitioning .alert,
-body.theme-transitioning input[type="text"],
-body.theme-transitioning input[type="password"],
-body.theme-transitioning .btn-secondary,
-body.theme-transitioning .btn-outline,
-body.theme-transitioning .copy-btn,
-body.theme-transitioning .theme-toggle {
+body.theme-transitioning :is(
+  .card, .app-header, .app-footer, .sandbox-banner,
+  .kv-item, .collapsible, .collapsible-header,
+  .json-viewer, .info-note, .info-panel, .error-detail, .alert,
+  input[type="text"], input[type="password"],
+  .btn-secondary, .btn-outline, .copy-btn, .theme-toggle
+) {
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
               background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
               color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
@@ -1178,22 +1158,7 @@ body.theme-transitioning .theme-toggle {
 /* Light mode body background */
 [data-theme="light"] body {
   background: var(--bg-primary);
-  background-image:
-    radial-gradient(ellipse at top, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
-    repeating-linear-gradient(
-      90deg,
-      rgba(99, 102, 241, 0.03) 0px,
-      transparent 1px,
-      transparent 39px,
-      rgba(99, 102, 241, 0.03) 40px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(99, 102, 241, 0.03) 0px,
-      transparent 1px,
-      transparent 39px,
-      rgba(99, 102, 241, 0.03) 40px
-    );
+  background-image: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.08) 0%, transparent 60%), var(--grid-lines-light);
   color: var(--text-primary);
 }
 
@@ -1201,6 +1166,8 @@ body.theme-transitioning .theme-toggle {
 [data-theme="light"] .app-header {
   background: rgba(253, 248, 240, 0.88);
   border-bottom: 1px solid rgba(99, 102, 241, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
 }
 
 /* Sandbox banner */
@@ -1489,11 +1456,6 @@ body.theme-transitioning .theme-toggle {
   opacity: 0.6;
 }
 
-/* Header polish: stronger blur + subtle shadow in light mode */
-[data-theme="light"] .app-header {
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-}
 
 /* Logo gradient in light mode: deeper purple */
 [data-theme="light"] .logo-duo {
