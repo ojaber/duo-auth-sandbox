@@ -1108,20 +1108,24 @@ input[aria-invalid="true"]:focus {
 
 /* ========================================
    Theme Transition (applied via JS on switch)
+   Scoped to no-preference so it can never override the
+   prefers-reduced-motion: reduce rules defined above.
    ======================================== */
-body.theme-transitioning,
-body.theme-transitioning :is(
-  .card, .app-header, .app-footer, .sandbox-banner,
-  .kv-item, .collapsible, .collapsible-header,
-  .json-viewer, .info-note, .info-panel, .error-detail, .alert,
-  input[type="text"], input[type="password"],
-  .btn-secondary, .btn-outline, .copy-btn, .theme-toggle
-) {
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+@media (prefers-reduced-motion: no-preference) {
+  body.theme-transitioning,
+  body.theme-transitioning :is(
+    .card, .app-header, .app-footer, .sandbox-banner,
+    .kv-item, .collapsible, .collapsible-header,
+    .json-viewer, .info-note, .info-panel, .error-detail, .alert,
+    input[type="text"], input[type="password"],
+    .btn-secondary, .btn-outline, .copy-btn, .theme-toggle
+  ) {
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 /* ========================================
