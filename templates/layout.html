@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Duo Universal Prompt 2FA integration testing sandbox">
-    <meta name="theme-color" content="#0a0e1a">
+    <meta name="theme-color" content="#0a0e1a" id="meta-theme-color">
     <title>{% block title %}Duo 2FA Demo{% endblock %}</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Theme init: runs synchronously to prevent flash of wrong theme (FOUC) -->
+    <script>
+    (function() {
+        var stored = localStorage.getItem('duo-theme');
+        var preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        var theme = stored || preferred;
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    })();
+    </script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -32,6 +43,15 @@
                 <span class="logo-text">2FA Testing Lab</span>
                 <span class="version-badge">v1.0</span>
             </div>
+            <button
+                class="theme-toggle"
+                id="theme-toggle"
+                aria-label="Switch to light mode"
+                title="Toggle theme"
+                type="button"
+            >
+                <span class="theme-toggle-icon" aria-hidden="true" id="theme-icon">🌙</span>
+            </button>
         </header>
         <main class="app-main" id="main-content" role="main">
             {% block content %}{% endblock %}
@@ -51,5 +71,69 @@
     </div>
 
     {% block scripts %}{% endblock %}
+    <script>
+    (function() {
+        var html = document.documentElement;
+        var btn = document.getElementById('theme-toggle');
+        var icon = document.getElementById('theme-icon');
+        var metaTheme = document.getElementById('meta-theme-color');
+
+        function getTheme() {
+            return html.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        }
+
+        function applyTheme(theme, animate) {
+            if (animate) {
+                // Start icon spin-out
+                icon.classList.add('theme-icon-exit');
+                // Enable page color transitions
+                document.body.classList.add('theme-transitioning');
+            }
+
+            setTimeout(function() {
+                // Swap theme at midpoint of icon animation
+                if (theme === 'light') {
+                    html.setAttribute('data-theme', 'light');
+                    icon.textContent = '☀️';
+                    btn.setAttribute('aria-label', 'Switch to dark mode');
+                    if (metaTheme) metaTheme.setAttribute('content', '#f1f5f9');
+                } else {
+                    html.removeAttribute('data-theme');
+                    icon.textContent = '🌙';
+                    btn.setAttribute('aria-label', 'Switch to light mode');
+                    if (metaTheme) metaTheme.setAttribute('content', '#0a0e1a');
+                }
+                localStorage.setItem('duo-theme', theme);
+
+                if (animate) {
+                    icon.classList.remove('theme-icon-exit');
+                    icon.classList.add('theme-icon-enter');
+                    setTimeout(function() {
+                        icon.classList.remove('theme-icon-enter');
+                    }, 300);
+                }
+            }, animate ? 180 : 0);
+
+            if (animate) {
+                setTimeout(function() {
+                    document.body.classList.remove('theme-transitioning');
+                }, 500);
+            }
+        }
+
+        // Set correct icon on load (no animation)
+        var initialTheme = getTheme();
+        if (initialTheme === 'light') {
+            icon.textContent = '☀️';
+            btn.setAttribute('aria-label', 'Switch to dark mode');
+            if (metaTheme) metaTheme.setAttribute('content', '#f1f5f9');
+        }
+
+        btn.addEventListener('click', function() {
+            var current = getTheme();
+            applyTheme(current === 'light' ? 'dark' : 'light', true);
+        });
+    })();
+    </script>
 </body>
 </html>
