@@ -134,7 +134,7 @@ def duo_callback():
             error=f"Duo authentication failed: {e}",
         ), 401
 
-    # Clear interim Duo session data
+    # Clear Duo-specific session state after successful MFA verification
     session.pop("duo_state", None)
     session.pop("duo_username", None)
 
