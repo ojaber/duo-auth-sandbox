@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Anti-FOUC: apply saved/OS theme before first paint -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('duo-theme');
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-theme', saved);
+          } else if (window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch(e) {}
+      })();
+    </script>
 </head>
 <body>
+    <!-- Theme transition overlay for radial sweep animation -->
+    <div class="theme-transition-overlay" id="themeOverlay" aria-hidden="true"></div>
+
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div class="sandbox-banner">
@@ -32,6 +48,19 @@
                 <span class="logo-text">2FA Testing Lab</span>
                 <span class="version-badge">v1.0</span>
             </div>
+            <!-- Orbital Theme Switcher -->
+            <button class="theme-switcher"
+                    id="themeSwitcher"
+                    role="switch"
+                    aria-checked="false"
+                    aria-label="Toggle light/dark theme"
+                    title="Switch theme">
+                <span class="theme-switcher-icon moon" aria-hidden="true">🌙</span>
+                <span class="theme-switcher-track" aria-hidden="true">
+                    <span class="theme-switcher-knob"></span>
+                </span>
+                <span class="theme-switcher-icon sun" aria-hidden="true">☀️</span>
+            </button>
         </header>
         <main class="app-main" id="main-content" role="main">
             {% block content %}{% endblock %}
@@ -51,5 +80,70 @@
     </div>
 
     {% block scripts %}{% endblock %}
+
+    <script>
+    (function() {
+      var btn = document.getElementById('themeSwitcher');
+      var overlay = document.getElementById('themeOverlay');
+
+      function getTheme() {
+        return document.documentElement.getAttribute('data-theme') || 'dark';
+      }
+
+      function setButtonState(theme) {
+        var isLight = theme === 'light';
+        btn.setAttribute('aria-checked', isLight ? 'true' : 'false');
+      }
+
+      // Sync button to current theme on load
+      setButtonState(getTheme());
+
+      btn.addEventListener('click', function() {
+        var current = getTheme();
+        var next = current === 'dark' ? 'light' : 'dark';
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReduced) {
+          // Position sweep origin at the button center
+          var rect = btn.getBoundingClientRect();
+          var cx = Math.round(rect.left + rect.width / 2);
+          var cy = Math.round(rect.top + rect.height / 2);
+          overlay.style.setProperty('--sweep-x', cx + 'px');
+          overlay.style.setProperty('--sweep-y', cy + 'px');
+
+          // Color the overlay to match the incoming theme
+          overlay.style.background = next === 'light'
+            ? 'radial-gradient(circle, rgba(253,246,232,0.97) 0%, rgba(245,237,224,0.95) 100%)'
+            : 'radial-gradient(circle, rgba(10,14,26,0.97) 0%, rgba(15,20,35,0.95) 100%)';
+
+          // Trigger sweep
+          overlay.classList.add('active');
+
+          // Flip theme at the midpoint of the sweep
+          setTimeout(function() {
+            document.documentElement.setAttribute('data-theme', next);
+            setButtonState(next);
+            try { localStorage.setItem('duo-theme', next); } catch(e) {}
+          }, 200);
+
+          // Remove overlay after animation completes
+          setTimeout(function() {
+            overlay.classList.remove('active');
+            // Reset clip-path instantly after removal
+            overlay.style.transition = 'none';
+            overlay.style.clipPath = 'circle(0% at ' + cx + 'px ' + cy + 'px)';
+            requestAnimationFrame(function() {
+              overlay.style.transition = '';
+            });
+          }, 420);
+        } else {
+          // No animation — just flip immediately
+          document.documentElement.setAttribute('data-theme', next);
+          setButtonState(next);
+          try { localStorage.setItem('duo-theme', next); } catch(e) {}
+        }
+      });
+    })();
+    </script>
 </body>
 </html>
