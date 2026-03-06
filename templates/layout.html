@@ -40,16 +40,30 @@
             <div class="footer-content">
                 <span>Duo Universal Prompt</span>
                 <span class="footer-divider">|</span>
-                <span>Flask Demo</span>
-                <span class="footer-divider">|</span>
-                <span class="api-status">
-                    <span class="status-indicator" aria-hidden="true"></span>
-                    API Connected
+                <span class="api-status" id="api-status" style="color: var(--text-muted, #6b7280);">
+                    <span class="status-indicator" id="status-indicator" aria-hidden="true" style="background: var(--text-muted, #6b7280); box-shadow: none; animation: none;"></span>
+                    <span id="status-text">Checking...</span>
                 </span>
             </div>
         </footer>
     </div>
 
     {% block scripts %}{% endblock %}
+    <script>
+        function setApiStatus(ok, label) {
+            var color = ok ? 'var(--accent-success)' : 'var(--accent-error)';
+            var el = document.getElementById('api-status');
+            var dot = document.getElementById('status-indicator');
+            el.style.color = color;
+            dot.style.background = color;
+            dot.style.boxShadow = '0 0 8px ' + color;
+            dot.style.animation = ok ? '' : 'none';
+            document.getElementById('status-text').textContent = label;
+        }
+        fetch('/api/health')
+            .then(r => r.json())
+            .then(data => setApiStatus(data.status === 'ok', data.status === 'ok' ? 'API Connected' : 'API Unavailable'))
+            .catch(() => setApiStatus(false, 'API Unavailable'));
+    </script>
 </body>
 </html>
