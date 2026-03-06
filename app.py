@@ -3,6 +3,7 @@ import os
 
 from flask import (
     Flask,
+    jsonify,
     redirect,
     render_template,
     request,
@@ -159,6 +160,17 @@ def auth_result():
         user=user,
         auth_result=session.get("auth_result"),
     )
+
+
+@app.route("/api/health")
+def api_health():
+    if config_error or duo_client is None:
+        return jsonify({"status": "error", "message": config_error or "Duo client not initialized"}), 503
+    try:
+        duo_client.health_check()
+        return jsonify({"status": "ok"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 503
 
 
 @app.route("/logout", methods=["POST"])
