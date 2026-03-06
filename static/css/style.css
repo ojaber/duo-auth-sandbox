@@ -11,9 +11,9 @@
 
 :root {
   /* Dark Theme Colors */
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #0f1419;
-  --card-bg: rgba(20, 26, 39, 0.7);
+  --bg-primary: #140808;
+  --bg-secondary: #1a0d0d;
+  --card-bg: rgba(28, 12, 12, 0.7);
   --card-border: rgba(99, 102, 241, 0.25);
 
   /* Accent Colors */
@@ -38,7 +38,7 @@
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  --gradient-bg: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
+  --gradient-bg: radial-gradient(ellipse at top, rgba(220, 38, 38, 0.15) 0%, transparent 60%);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -54,17 +54,17 @@ body {
     var(--gradient-bg),
     repeating-linear-gradient(
       90deg,
-      rgba(99, 102, 241, 0.05) 0px,
+      rgba(220, 38, 38, 0.06) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
+      rgba(220, 38, 38, 0.06) 40px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(99, 102, 241, 0.05) 0px,
+      rgba(220, 38, 38, 0.06) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
+      rgba(220, 38, 38, 0.06) 40px
     );
   color: var(--text-primary);
   min-height: 100vh;
@@ -154,7 +154,7 @@ body {
 .app-header {
   padding: 1.5rem 2rem;
   backdrop-filter: blur(12px);
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(26, 8, 8, 0.5);
   border-bottom: 1px solid rgba(99, 102, 241, 0.15);
   position: sticky;
   top: 0;
@@ -239,7 +239,7 @@ body {
   font-size: 0.8125rem;
   color: var(--text-muted);
   border-top: 1px solid rgba(99, 102, 241, 0.08);
-  background: rgba(15, 23, 42, 0.3);
+  background: rgba(26, 8, 8, 0.3);
   font-family: var(--font-mono);
 }
 
@@ -353,7 +353,7 @@ input[type="password"] {
   font-size: 1rem;
   font-family: inherit;
   color: var(--text-primary);
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(26, 8, 8, 0.6);
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 0.75rem;
   outline: none;
@@ -363,13 +363,13 @@ input[type="password"] {
 input[type="text"]:hover,
 input[type="password"]:hover {
   border-color: rgba(6, 182, 212, 0.4);
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(26, 8, 8, 0.8);
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
   border-color: var(--accent-cyan);
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(26, 8, 8, 0.9);
   box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15),
               0 4px 12px rgba(0, 0, 0, 0.2),
               inset 0 1px 2px rgba(6, 182, 212, 0.1);
@@ -612,14 +612,14 @@ input[aria-invalid="true"]:focus {
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 1rem;
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(26, 8, 8, 0.4);
   border: 1px solid rgba(99, 102, 241, 0.1);
   border-radius: 0.5rem;
   transition: all 0.2s;
 }
 
 .kv-item:hover {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(26, 8, 8, 0.6);
   border-color: rgba(99, 102, 241, 0.2);
 }
 
@@ -696,7 +696,7 @@ input[aria-invalid="true"]:focus {
   border: 1px solid rgba(99, 102, 241, 0.15);
   border-radius: 0.75rem;
   overflow: hidden;
-  background: rgba(15, 23, 42, 0.3);
+  background: rgba(26, 8, 8, 0.3);
 }
 
 .collapsible-header {
@@ -716,7 +716,7 @@ input[aria-invalid="true"]:focus {
 }
 
 .collapsible-header:hover {
-  background: rgba(99, 102, 241, 0.05);
+  background: rgba(220, 38, 38, 0.06);
 }
 
 .collapsible-arrow {
@@ -746,7 +746,7 @@ input[aria-invalid="true"]:focus {
 
 /* === JSON Viewer === */
 .json-viewer {
-  background: rgba(10, 14, 26, 0.9);
+  background: rgba(16, 6, 6, 0.9);
   border: 1px solid rgba(99, 102, 241, 0.2);
   border-radius: 0.75rem;
   padding: 1.25rem;
@@ -774,7 +774,7 @@ input[aria-invalid="true"]:focus {
 
 .json-viewer::-webkit-scrollbar-track,
 .json-viewer pre::-webkit-scrollbar-track {
-  background: rgba(99, 102, 241, 0.05);
+  background: rgba(220, 38, 38, 0.06);
   border-radius: 4px;
 }
 
@@ -834,7 +834,7 @@ input[aria-invalid="true"]:focus {
 
 /* === Error Detail Block === */
 .error-detail {
-  background: rgba(10, 14, 26, 0.9);
+  background: rgba(16, 6, 6, 0.9);
   border: 1px solid rgba(239, 68, 68, 0.2);
   border-radius: 0.75rem;
   padding: 1.25rem;
@@ -863,7 +863,7 @@ input[aria-invalid="true"]:focus {
 
 /* === Info Panel (legacy compat) === */
 .info-panel {
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(26, 8, 8, 0.5);
   border: 1px solid rgba(99, 102, 241, 0.15);
   border-radius: 1rem;
   padding: 1.5rem;
