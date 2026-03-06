@@ -238,8 +238,8 @@ body {
   text-align: center;
   font-size: 0.8125rem;
   color: var(--text-muted);
-  border-top: 1px solid rgba(99, 102, 241, 0.08);
-  background: rgba(15, 23, 42, 0.3);
+  border-top: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.08);
   font-family: var(--font-mono);
 }
 
