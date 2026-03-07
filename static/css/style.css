@@ -11,14 +11,14 @@
 
 :root {
   /* Dark Theme Colors */
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #0f1419;
-  --card-bg: rgba(20, 26, 39, 0.7);
-  --card-border: rgba(99, 102, 241, 0.25);
+  --bg-primary: #1a1300;
+  --bg-secondary: #211900;
+  --card-bg: rgba(30, 22, 0, 0.75);
+  --card-border: rgba(245, 158, 11, 0.3);
 
   /* Accent Colors */
-  --accent-primary: #6366f1;
-  --accent-secondary: #8b5cf6;
+  --accent-primary: #f59e0b;
+  --accent-secondary: #d97706;
   --accent-cyan: #06b6d4;
   --accent-success: #10b981;
   --accent-warning: #f59e0b;
@@ -35,16 +35,16 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --gradient-primary: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  --gradient-bg: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
+  --gradient-bg: radial-gradient(ellipse at top, rgba(245, 158, 11, 0.15) 0%, transparent 60%);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.4);
+  --shadow-glow: 0 0 40px rgba(245, 158, 11, 0.4);
 }
 
 body {
@@ -54,17 +54,17 @@ body {
     var(--gradient-bg),
     repeating-linear-gradient(
       90deg,
-      rgba(99, 102, 241, 0.05) 0px,
+      rgba(245, 158, 11, 0.06) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
+      rgba(245, 158, 11, 0.06) 40px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(99, 102, 241, 0.05) 0px,
+      rgba(245, 158, 11, 0.06) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
+      rgba(245, 158, 11, 0.06) 40px
     );
   color: var(--text-primary);
   min-height: 100vh;
@@ -106,8 +106,8 @@ body {
 
 /* === Sandbox Banner === */
 .sandbox-banner {
-  background: linear-gradient(90deg, rgba(139, 92, 246, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.15) 100%);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.3);
   padding: 0.5rem 0;
   backdrop-filter: blur(12px);
 }
@@ -123,7 +123,7 @@ body {
 
 .sandbox-icon {
   font-size: 1rem;
-  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.6));
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.6));
 }
 
 .sandbox-text {
@@ -132,8 +132,8 @@ body {
 }
 
 .sandbox-badge {
-  background: rgba(139, 92, 246, 0.2);
-  color: #c4b5fd;
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
   padding: 0.125rem 0.625rem;
   border-radius: 0.375rem;
   font-size: 0.6875rem;
@@ -141,7 +141,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: var(--font-mono);
-  border: 1px solid rgba(139, 92, 246, 0.4);
+  border: 1px solid rgba(245, 158, 11, 0.4);
 }
 
 /* === Layout === */
@@ -154,8 +154,8 @@ body {
 .app-header {
   padding: 1.5rem 2rem;
   backdrop-filter: blur(12px);
-  background: rgba(15, 23, 42, 0.5);
-  border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+  background: rgba(20, 15, 0, 0.5);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -180,7 +180,7 @@ body {
 }
 
 .logo-bracket {
-  color: var(--accent-secondary);
+  color: var(--accent-warning);
   opacity: 0.7;
 }
 
@@ -198,7 +198,7 @@ body {
 }
 
 .version-badge {
-  background: rgba(99, 102, 241, 0.15);
+  background: rgba(245, 158, 11, 0.15);
   color: var(--text-muted);
   padding: 0.125rem 0.5rem;
   border-radius: 0.375rem;
@@ -206,7 +206,7 @@ body {
   font-weight: 600;
   font-family: var(--font-mono);
   letter-spacing: 0.02em;
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .dev-badge {
@@ -238,8 +238,8 @@ body {
   text-align: center;
   font-size: 0.8125rem;
   color: var(--text-muted);
-  border-top: 1px solid rgba(99, 102, 241, 0.08);
-  background: rgba(15, 23, 42, 0.3);
+  border-top: 1px solid rgba(245, 158, 11, 0.1);
+  background: rgba(20, 15, 0, 0.3);
   font-family: var(--font-mono);
 }
 
@@ -252,7 +252,7 @@ body {
 }
 
 .footer-divider {
-  color: rgba(99, 102, 241, 0.3);
+  color: rgba(245, 158, 11, 0.3);
 }
 
 .api-status {
@@ -293,7 +293,7 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.5), transparent);
 }
 
 @keyframes fadeInUp {
