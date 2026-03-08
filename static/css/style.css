@@ -490,14 +490,18 @@ input[aria-invalid="true"]:focus {
   transform: none !important;
 }
 
-/* === Continue to 2FA Button (Pink) === */
+/* === Continue to 2FA Button (Shiny Silver) === */
 #submit-btn {
-  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
-  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+  background: linear-gradient(135deg, #e8e8e8 0%, #a8a8a8 40%, #f0f0f0 60%, #b0b0b0 100%);
+  box-shadow: 0 4px 12px rgba(160, 160, 160, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #1a1a1a;
+  border: 1px solid #999;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 #submit-btn:hover {
-  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.3);
+  background: linear-gradient(135deg, #f0f0f0 0%, #c0c0c0 40%, #ffffff 60%, #c8c8c8 100%);
+  box-shadow: 0 8px 20px rgba(160, 160, 160, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* === Loading State === */
