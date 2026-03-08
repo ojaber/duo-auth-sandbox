@@ -11,8 +11,8 @@
 
 :root {
   /* Dark Theme Colors */
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #0f1419;
+  --bg-primary: #1c0800;
+  --bg-secondary: #2d0e00;
   --card-bg: rgba(20, 26, 39, 0.7);
   --card-border: rgba(99, 102, 241, 0.25);
 
@@ -38,7 +38,7 @@
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  --gradient-bg: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
+  --gradient-bg: linear-gradient(160deg, #f97316 0%, #ea580c 35%, #c2410c 65%, #431407 100%);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -49,23 +49,23 @@
 
 body {
   font-family: var(--font-sans);
-  background: var(--bg-primary);
+  background-color: #431407;
   background-image:
-    var(--gradient-bg),
     repeating-linear-gradient(
       90deg,
-      rgba(99, 102, 241, 0.05) 0px,
+      rgba(249, 115, 22, 0.07) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
+      rgba(249, 115, 22, 0.07) 40px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(99, 102, 241, 0.05) 0px,
+      rgba(249, 115, 22, 0.07) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
-    );
+      rgba(249, 115, 22, 0.07) 40px
+    ),
+    var(--gradient-bg);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
