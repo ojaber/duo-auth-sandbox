@@ -39,6 +39,7 @@
   --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-bg: radial-gradient(ellipse at top, rgba(251, 146, 60, 0.22) 0%, transparent 60%);
+  --gradient-page: linear-gradient(160deg, #120700 0%, #2e0f00 45%, #4a1e00 100%);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -66,7 +67,7 @@ body {
       transparent 39px,
       rgba(251, 146, 60, 0.06) 40px
     ),
-    linear-gradient(160deg, #120700 0%, #2e0f00 45%, #4a1e00 100%);
+    var(--gradient-page);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
