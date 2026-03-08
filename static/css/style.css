@@ -14,7 +14,7 @@
   --bg-primary: #1f0d00;
   --bg-secondary: #150900;
   --card-bg: rgba(20, 26, 39, 0.7);
-  --card-border: rgba(99, 102, 241, 0.25);
+  --card-border: rgba(251, 146, 60, 0.3);
 
   /* Accent Colors */
   --accent-primary: #6366f1;
@@ -44,28 +44,28 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.4);
+  --shadow-glow: 0 0 40px rgba(251, 146, 60, 0.4);
 }
 
 body {
   font-family: var(--font-sans);
   background: var(--bg-primary);
   background-image:
-    var(--gradient-bg),
     repeating-linear-gradient(
       90deg,
-      rgba(255, 200, 100, 0.06) 0px,
+      rgba(255, 200, 100, 0.08) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(255, 200, 100, 0.06) 40px
+      rgba(255, 200, 100, 0.08) 40px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(255, 200, 100, 0.06) 0px,
+      rgba(255, 200, 100, 0.08) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(255, 200, 100, 0.06) 40px
-    );
+      rgba(255, 200, 100, 0.08) 40px
+    ),
+    var(--gradient-bg);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
