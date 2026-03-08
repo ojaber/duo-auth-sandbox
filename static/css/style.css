@@ -11,8 +11,8 @@
 
 :root {
   /* Dark Theme Colors */
-  --bg-primary: #1a0800;
-  --bg-secondary: #2d1000;
+  --bg-primary: #1a0000;
+  --bg-secondary: #2d0000;
   --card-bg: rgba(20, 26, 39, 0.7);
   --card-border: rgba(99, 102, 241, 0.25);
 
@@ -38,7 +38,7 @@
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  --gradient-bg: radial-gradient(ellipse at top, rgba(255, 160, 0, 0.2) 0%, transparent 60%);
+  --gradient-bg: radial-gradient(ellipse at top, rgba(255, 80, 80, 0.2) 0%, transparent 60%);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -49,7 +49,7 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #ff6600;
+  background-color: #cc0000;
   background-image:
     var(--gradient-bg),
     repeating-linear-gradient(
@@ -66,7 +66,7 @@ body {
       transparent 39px,
       rgba(255, 255, 255, 0.07) 40px
     ),
-    linear-gradient(135deg, #ffb300 0%, #ff6600 100%);
+    linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
