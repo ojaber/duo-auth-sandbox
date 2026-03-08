@@ -490,6 +490,16 @@ input[aria-invalid="true"]:focus {
   transform: none !important;
 }
 
+/* === Continue to 2FA Button (Pink) === */
+#submit-btn {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+}
+
+#submit-btn:hover {
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.3);
+}
+
 /* === Loading State === */
 .btn-primary.loading {
   pointer-events: none;
