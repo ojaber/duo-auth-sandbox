@@ -49,23 +49,24 @@
 
 body {
   font-family: var(--font-sans);
-  background: linear-gradient(135deg, #ff6b00 0%, #ff4500 100%);
+  background-color: #ff6600;
   background-image:
     var(--gradient-bg),
     repeating-linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.07) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(255, 255, 255, 0.06) 40px
+      rgba(255, 255, 255, 0.07) 40px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.07) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(255, 255, 255, 0.06) 40px
-    );
+      rgba(255, 255, 255, 0.07) 40px
+    ),
+    linear-gradient(135deg, #ffb300 0%, #ff6600 100%);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
