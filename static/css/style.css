@@ -11,10 +11,10 @@
 
 :root {
   /* Dark Theme Colors */
-  --bg-primary: #1f0d00;
-  --bg-secondary: #150900;
+  --bg-primary: #1a1600;
+  --bg-secondary: #120f00;
   --card-bg: rgba(20, 26, 39, 0.82);
-  --card-border: rgba(251, 146, 60, 0.3);
+  --card-border: rgba(253, 224, 71, 0.3);
 
   /* Accent Colors */
   --accent-primary: #6366f1;
@@ -38,13 +38,13 @@
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  --gradient-bg: linear-gradient(135deg, #b83a0a 0%, #d95508 45%, #f58428 100%);
+  --gradient-bg: linear-gradient(135deg, #ca8a04 0%, #eab308 45%, #fde047 100%);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px rgba(251, 146, 60, 0.4);
+  --shadow-glow: 0 0 40px rgba(234, 179, 8, 0.4);
 }
 
 body {
@@ -53,17 +53,17 @@ body {
   background-image:
     repeating-linear-gradient(
       90deg,
-      rgba(255, 200, 100, 0.08) 0px,
+      rgba(253, 224, 71, 0.08) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(255, 200, 100, 0.08) 40px
+      rgba(253, 224, 71, 0.08) 40px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(255, 200, 100, 0.08) 0px,
+      rgba(253, 224, 71, 0.08) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(255, 200, 100, 0.08) 40px
+      rgba(253, 224, 71, 0.08) 40px
     ),
     var(--gradient-bg);
   color: var(--text-primary);
@@ -106,8 +106,8 @@ body {
 
 /* === Sandbox Banner === */
 .sandbox-banner {
-  background: linear-gradient(90deg, rgba(180, 60, 12, 0.35) 0%, rgba(220, 90, 20, 0.25) 100%);
-  border-bottom: 1px solid rgba(251, 146, 60, 0.4);
+  background: linear-gradient(90deg, rgba(161, 130, 0, 0.35) 0%, rgba(202, 138, 4, 0.25) 100%);
+  border-bottom: 1px solid rgba(253, 224, 71, 0.4);
   padding: 0.5rem 0;
   backdrop-filter: blur(12px);
 }
@@ -132,8 +132,8 @@ body {
 }
 
 .sandbox-badge {
-  background: rgba(251, 146, 60, 0.2);
-  color: #fdba74;
+  background: rgba(253, 224, 71, 0.2);
+  color: #fde047;
   padding: 0.125rem 0.625rem;
   border-radius: 0.375rem;
   font-size: 0.6875rem;
@@ -141,7 +141,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: var(--font-mono);
-  border: 1px solid rgba(251, 146, 60, 0.5);
+  border: 1px solid rgba(253, 224, 71, 0.5);
 }
 
 /* === Layout === */
