@@ -11,8 +11,8 @@
 
 :root {
   /* Dark Theme Colors */
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #0f1419;
+  --bg-primary: #100500;
+  --bg-secondary: #1a0900;
   --card-bg: rgba(20, 26, 39, 0.7);
   --card-border: rgba(99, 102, 241, 0.25);
 
@@ -38,7 +38,7 @@
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  --gradient-bg: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
+  --gradient-bg: radial-gradient(ellipse at top, rgba(255, 107, 0, 0.22) 0%, rgba(220, 60, 0, 0.10) 40%, transparent 70%);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -49,23 +49,25 @@
 
 body {
   font-family: var(--font-sans);
-  background: var(--bg-primary);
+  background-color: #100500;
+  background-attachment: fixed;
   background-image:
     var(--gradient-bg),
     repeating-linear-gradient(
       90deg,
-      rgba(99, 102, 241, 0.05) 0px,
+      rgba(255, 107, 0, 0.05) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
+      rgba(255, 107, 0, 0.05) 40px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(99, 102, 241, 0.05) 0px,
+      rgba(255, 107, 0, 0.05) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(99, 102, 241, 0.05) 40px
-    );
+      rgba(255, 107, 0, 0.05) 40px
+    ),
+    linear-gradient(135deg, #100500 0%, #2d0e00 35%, #3d1800 60%, #1f0800 100%);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
