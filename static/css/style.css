@@ -440,15 +440,15 @@ input[aria-invalid="true"]:focus {
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
-  color: white;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, #ffe600 0%, #ffc400 100%);
+  color: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(255, 214, 0, 0.4);
   width: 100%;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4), var(--shadow-glow);
+  box-shadow: 0 8px 20px rgba(255, 214, 0, 0.5), 0 0 40px rgba(255, 214, 0, 0.3);
 }
 
 .btn-primary:active {
