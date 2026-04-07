@@ -11,10 +11,10 @@
 
 :root {
   /* Barbie Pink Theme Colors */
-  --bg-primary: #1a0020;
-  --bg-secondary: #220028;
-  --card-bg: rgba(50, 5, 45, 0.78);
-  --card-border: rgba(255, 105, 180, 0.4);
+  --bg-primary: #C2005A;
+  --bg-secondary: #D40065;
+  --card-bg: rgba(18, 0, 12, 0.88);
+  --card-border: rgba(255, 182, 224, 0.45);
 
   /* Barbie Accent Colors */
   --accent-primary: #FF1493;
@@ -38,7 +38,7 @@
   --gradient-primary: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
   --gradient-cyan: linear-gradient(135deg, #FF85C1 0%, #FF1493 100%);
   --gradient-success: linear-gradient(135deg, #FF85C2 0%, #E91E8C 100%);
-  --gradient-bg: radial-gradient(ellipse at top, rgba(255, 20, 147, 0.22) 0%, transparent 60%);
+  --gradient-bg: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -52,20 +52,21 @@ body {
   background: var(--bg-primary);
   background-image:
     var(--gradient-bg),
-    radial-gradient(ellipse at bottom right, rgba(233, 30, 140, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(255, 20, 147, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at top left, rgba(255, 105, 180, 0.25) 0%, transparent 50%),
     repeating-linear-gradient(
       90deg,
-      rgba(255, 20, 147, 0.06) 0px,
+      rgba(255, 255, 255, 0.05) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(255, 20, 147, 0.06) 40px
+      rgba(255, 255, 255, 0.05) 40px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(255, 20, 147, 0.06) 0px,
+      rgba(255, 255, 255, 0.05) 0px,
       transparent 1px,
       transparent 39px,
-      rgba(255, 20, 147, 0.06) 40px
+      rgba(255, 255, 255, 0.05) 40px
     );
   color: var(--text-primary);
   min-height: 100vh;
@@ -155,8 +156,8 @@ body {
 .app-header {
   padding: 1.5rem 2rem;
   backdrop-filter: blur(12px);
-  background: rgba(30, 5, 25, 0.55);
-  border-bottom: 1px solid rgba(255, 20, 147, 0.2);
+  background: rgba(100, 0, 50, 0.55);
+  border-bottom: 1px solid rgba(255, 182, 224, 0.3);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -239,8 +240,8 @@ body {
   text-align: center;
   font-size: 0.8125rem;
   color: var(--text-muted);
-  border-top: 1px solid rgba(255, 20, 147, 0.12);
-  background: rgba(30, 5, 25, 0.35);
+  border-top: 1px solid rgba(255, 182, 224, 0.2);
+  background: rgba(100, 0, 50, 0.45);
   font-family: var(--font-mono);
 }
 
