@@ -1,5 +1,13 @@
 /* ========================================
-   Duo 2FA Testing Lab - Barbie Pink Theme
+   Duo 2FA Testing Lab - Purple Theme
+   ========================================
+   Color palette:
+     Primary purple:   #7b2fbe  (vibrant mid-purple)
+     Deep purple:      #4a148c  (dark anchor)
+     Medium purple:    #9c27b0  (hot purple)
+     Card bg tint:     rgba(50, 0, 80, 0.45)   (dark purple glass)
+     Lavender light:   #ce93d8  (accent/highlight)
+     Lavender pale:    #e1bee7  (subtle text/icon)
    ======================================== */
 
 /* === CSS Reset & Base === */
@@ -10,16 +18,16 @@
 }
 
 :root {
-  /* Barbie Pink Theme Colors */
-  --bg-primary: #e91e8c;
-  --bg-secondary: #f06292;
-  --card-bg: rgba(100, 0, 50, 0.45);
-  --card-border: rgba(255, 182, 193, 0.45);
+  /* Purple Theme Colors */
+  --bg-primary: #7b2fbe;
+  --bg-secondary: #ab47bc;
+  --card-bg: rgba(50, 0, 80, 0.45);
+  --card-border: rgba(206, 147, 216, 0.45);
 
   /* Accent Colors */
   --accent-primary: #ffffff;
-  --accent-secondary: #ffb6c1;
-  --accent-cyan: #ffd1dc;
+  --accent-secondary: #ce93d8;
+  --accent-cyan: #e1bee7;
   --accent-success: #10b981;
   --accent-warning: #f59e0b;
   --accent-error: #ef4444;
@@ -28,22 +36,22 @@
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.88);
   --text-muted: rgba(255, 255, 255, 0.85);
-  --text-code: #fce4ec;
+  --text-code: #f3e5f5;
 
   /* Fonts */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #ff69b4 0%, #e91e8c 100%);
-  --gradient-cyan: linear-gradient(135deg, #f06292 0%, #e91e8c 100%);
+  --gradient-primary: linear-gradient(135deg, #9c27b0 0%, #7b2fbe 100%);
+  --gradient-cyan: linear-gradient(135deg, #ab47bc 0%, #7b2fbe 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  --gradient-bg: radial-gradient(ellipse at 50% -10%, rgba(255, 182, 193, 0.55) 0%, rgba(255, 105, 180, 0.25) 35%, transparent 65%);
+  --gradient-bg: radial-gradient(ellipse at 50% -10%, rgba(206, 147, 216, 0.55) 0%, rgba(156, 39, 176, 0.25) 35%, transparent 65%);
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(173, 20, 87, 0.3);
-  --shadow-md: 0 4px 16px rgba(173, 20, 87, 0.4);
-  --shadow-lg: 0 8px 32px rgba(173, 20, 87, 0.5);
+  --shadow-sm: 0 2px 8px rgba(74, 20, 140, 0.3);
+  --shadow-md: 0 4px 16px rgba(74, 20, 140, 0.4);
+  --shadow-lg: 0 8px 32px rgba(74, 20, 140, 0.5);
   --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.35);
 }
 
@@ -65,7 +73,7 @@ body {
       transparent 39px,
       rgba(255, 255, 255, 0.06) 40px
     ),
-    linear-gradient(160deg, #ffb6c1 0%, #ff69b4 25%, #e91e8c 60%, #ad1457 100%);
+    linear-gradient(160deg, #ce93d8 0%, #9c27b0 25%, #7b2fbe 60%, #4a148c 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
@@ -79,7 +87,7 @@ body {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #ad1457;
+  background: #4a148c;
   color: white;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -107,7 +115,7 @@ body {
 
 /* === Sandbox Banner === */
 .sandbox-banner {
-  background: linear-gradient(90deg, rgba(255, 105, 180, 0.3) 0%, rgba(233, 30, 140, 0.3) 100%);
+  background: linear-gradient(90deg, rgba(156, 39, 176, 0.3) 0%, rgba(123, 47, 190, 0.3) 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 0.5rem 0;
   backdrop-filter: blur(12px);
@@ -181,12 +189,12 @@ body {
 }
 
 .logo-bracket {
-  color: #ffb6c1;
+  color: #ce93d8;
   opacity: 0.85;
 }
 
 .logo-duo {
-  background: linear-gradient(135deg, #ffffff 0%, #ffd1dc 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #e1bee7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -218,7 +226,7 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.18);
-  color: #ffd1dc;
+  color: #e1bee7;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 0.375rem;
   font-family: var(--font-mono);
@@ -403,7 +411,7 @@ input[aria-invalid="true"]:focus {
 .field-hint::before {
   content: '//';
   margin-right: 0.375rem;
-  color: #ffb6c1;
+  color: #ce93d8;
   opacity: 0.65;
 }
 
@@ -441,15 +449,15 @@ input[aria-invalid="true"]:focus {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ff69b4 0%, #ad1457 100%);
+  background: linear-gradient(135deg, #9c27b0 0%, #4a148c 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(173, 20, 87, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  box-shadow: 0 4px 12px rgba(74, 20, 140, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   width: 100%;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(173, 20, 87, 0.55), var(--shadow-glow);
+  box-shadow: 0 8px 20px rgba(74, 20, 140, 0.55), var(--shadow-glow);
 }
 
 .btn-primary:active {
@@ -541,8 +549,8 @@ input[aria-invalid="true"]:focus {
 /* === Info Note Box === */
 .info-note {
   padding: 1rem 1.25rem;
-  background: rgba(100, 0, 50, 0.35);
-  border: 1px solid rgba(255, 182, 193, 0.4);
+  background: rgba(50, 0, 80, 0.35);
+  border: 1px solid rgba(206, 147, 216, 0.4);
   border-radius: 0.75rem;
   font-size: 0.875rem;
   color: var(--text-secondary);
@@ -613,15 +621,15 @@ input[aria-invalid="true"]:focus {
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 1rem;
-  background: rgba(100, 0, 50, 0.35);
-  border: 1px solid rgba(255, 182, 193, 0.3);
+  background: rgba(50, 0, 80, 0.35);
+  border: 1px solid rgba(206, 147, 216, 0.3);
   border-radius: 0.5rem;
   transition: all 0.2s;
 }
 
 .kv-item:hover {
-  background: rgba(100, 0, 50, 0.5);
-  border-color: rgba(255, 182, 193, 0.5);
+  background: rgba(50, 0, 80, 0.5);
+  border-color: rgba(206, 147, 216, 0.5);
 }
 
 .kv-key {
@@ -678,14 +686,14 @@ input[aria-invalid="true"]:focus {
 
 .status-badge-info {
   background: rgba(255, 255, 255, 0.15);
-  color: #ffd1dc;
+  color: #e1bee7;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .code-value {
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  color: #ffd1dc;
+  color: #e1bee7;
   background: rgba(255, 255, 255, 0.12);
   padding: 0.125rem 0.5rem;
   border-radius: 0.375rem;
@@ -694,10 +702,10 @@ input[aria-invalid="true"]:focus {
 
 /* === Collapsible Section === */
 .collapsible {
-  border: 1px solid rgba(255, 182, 193, 0.4);
+  border: 1px solid rgba(206, 147, 216, 0.4);
   border-radius: 0.75rem;
   overflow: hidden;
-  background: rgba(100, 0, 50, 0.3);
+  background: rgba(50, 0, 80, 0.3);
 }
 
 .collapsible-header {
@@ -722,7 +730,7 @@ input[aria-invalid="true"]:focus {
 
 .collapsible-arrow {
   display: inline-block;
-  color: #ffd1dc;
+  color: #e1bee7;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.75rem;
 }
@@ -747,8 +755,8 @@ input[aria-invalid="true"]:focus {
 
 /* === JSON Viewer === */
 .json-viewer {
-  background: rgba(100, 0, 50, 0.88);
-  border: 1px solid rgba(255, 182, 193, 0.25);
+  background: rgba(50, 0, 80, 0.88);
+  border: 1px solid rgba(206, 147, 216, 0.25);
   border-radius: 0.75rem;
   padding: 1.25rem;
   position: relative;
@@ -775,26 +783,26 @@ input[aria-invalid="true"]:focus {
 
 .json-viewer::-webkit-scrollbar-track,
 .json-viewer pre::-webkit-scrollbar-track {
-  background: rgba(255, 182, 193, 0.08);
+  background: rgba(206, 147, 216, 0.08);
   border-radius: 4px;
 }
 
 .json-viewer::-webkit-scrollbar-thumb,
 .json-viewer pre::-webkit-scrollbar-thumb {
-  background: rgba(255, 105, 180, 0.4);
+  background: rgba(156, 39, 176, 0.4);
   border-radius: 4px;
 }
 
 .json-viewer::-webkit-scrollbar-thumb:hover,
 .json-viewer pre::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 105, 180, 0.65);
+  background: rgba(156, 39, 176, 0.65);
 }
 
 /* JSON Syntax Highlighting */
-.json-key { color: #f9a8d4; font-weight: 500; }
+.json-key { color: #ce93d8; font-weight: 500; }
 .json-string { color: #6ee7b7; }
 .json-number { color: #fbbf24; }
-.json-boolean { color: #f472b6; }
+.json-boolean { color: #ba68c8; }
 .json-null { color: rgba(255, 255, 255, 0.5); font-style: italic; }
 
 /* === Copy Button === */
@@ -835,7 +843,7 @@ input[aria-invalid="true"]:focus {
 
 /* === Error Detail Block === */
 .error-detail {
-  background: rgba(100, 0, 50, 0.88);
+  background: rgba(50, 0, 80, 0.88);
   border: 1px solid rgba(239, 68, 68, 0.25);
   border-radius: 0.75rem;
   padding: 1.25rem;
@@ -851,7 +859,7 @@ input[aria-invalid="true"]:focus {
 }
 
 .error-detail .detail-key {
-  color: #f9a8d4;
+  color: #ce93d8;
 }
 
 .error-detail .detail-string {
